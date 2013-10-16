@@ -42,7 +42,7 @@ app.get('/where', function(request, response){
     response.send('where you at')
 })
 
-app.get('/home', function(request, response){
+app.all ('/home', function(request, response){
     fs.readFile(__dirname + '/index.html', function(error,data){
         response.setHeader('Content-Type', 'text/html')
         response.send(data)
@@ -57,10 +57,15 @@ app.get('/success', function(request, response){
     response.send('success!!!')
 })
 
-app.post('/', function(request, response){
-    console.log(request.body)  
+app.get('/', function(request, response){
+    console.log('body',request.body)  
+    console.log('query', request.query)
     response.setHeader('Content-Type', 'text/html')
     response.send('<h1>It works!</h1>')
+})
+
+app.get('/jade', function(request, response){
+    response.render('index.jade', {random : Math.random(), title : 'The Jadery'})    
 })
 
 http.createServer(app).listen(app.get('port'), function(){

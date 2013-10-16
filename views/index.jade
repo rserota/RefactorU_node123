@@ -1,5 +1,19 @@
 extends layout
 
 block content
-  h1= title
+  h1 I'm Jaded
   p Welcome to #{title}
+  a(href='http://fall2013.refactoru.com') Student Site
+  p 
+    |This is so random: #{random}
+  if random < .5
+    h1 so small...
+  .myDiv This is a classy div
+    #theDiv This is a well-identified div
+  mixin stuff(name, material)
+    li It's a #{name} made of #{material}
+  
+  ul
+    +stuff('table', 'garbage')
+    +stuff('pair of pants', 'aluminum')
+    +stuff('planet', 'rainbows')
